@@ -1,5 +1,9 @@
 package com.library.entities;
 
+
+
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,15 +16,13 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Student
+public class LibraryCard 
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int rollNo;
-	private String name;
-	private String branch;
-	private double cgpa;
-	private String emailId;
-	
+	private int cardNo;
+	private CardStatus cardStatus;
+	private int noOfBooksIssued;
+	private Date validity;
 
 }
