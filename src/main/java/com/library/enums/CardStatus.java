@@ -1,4 +1,4 @@
-package com.library.entities;
+package com.library.enums;
 
 public enum CardStatus 
 {

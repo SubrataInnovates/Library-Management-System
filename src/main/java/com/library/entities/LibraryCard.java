@@ -2,6 +2,8 @@ package com.library.entities;
 
 import java.util.Date;
 
+import com.library.enums.CardStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -38,5 +40,5 @@ public class LibraryCard {
     
     @JoinColumn
     @OneToOne
-    Student student;
+    private Student student;
 }

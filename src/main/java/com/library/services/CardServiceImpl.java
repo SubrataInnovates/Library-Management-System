@@ -5,8 +5,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.library.entities.CardStatus;
 import com.library.entities.LibraryCard;
+import com.library.enums.CardStatus;
 import com.library.repository.CardRepository;
 
 @Service
