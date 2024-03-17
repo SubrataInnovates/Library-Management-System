@@ -1,5 +1,8 @@
 package com.library.services;
 
+
+
+import java.time.LocalDate;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +24,7 @@ public class CardServiceImpl implements CardService
 		LibraryCard card = new LibraryCard();
 		card.setCardStatus(CardStatus.NEW);
 		card.setNoOfBooksIssued(0);
-		Date expiryDate=new Date();
+		LocalDate expiryDate=LocalDate.now();
 		
 		card.setValidity(expiryDate);
 		
