@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -43,4 +44,6 @@ public class Book {
     @JoinColumn
     @ManyToOne
     private Author author;
+    @AssertTrue(message = "Issued status must be specified")
+    private Boolean isIssued;
 }

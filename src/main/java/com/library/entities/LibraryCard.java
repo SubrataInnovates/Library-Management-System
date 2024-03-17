@@ -1,5 +1,6 @@
 package com.library.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import com.library.enums.CardStatus;
@@ -36,7 +37,7 @@ public class LibraryCard {
 
     @NotNull(message = "Validity date is required")
     @Column(nullable = false)
-    private Date validity;
+    private LocalDate validity;
     
     @JoinColumn
     @OneToOne

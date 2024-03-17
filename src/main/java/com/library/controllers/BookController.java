@@ -43,10 +43,24 @@ public class BookController
 	@PutMapping("/associateBookAndAuthor")
 	public ResponseEntity associatedBookAndAuthor(@RequestParam ("bookId")Integer bookId,@RequestParam("authorId")Integer authorId)
 	{
-		String associateBookAndAuthor = bookService.associateBookAndAuthor(bookId, authorId);
-		logger.info("Book and author have been associated : {} "+associateBookAndAuthor);
-		return new ResponseEntity(associateBookAndAuthor,HttpStatus.OK);
+		try 
+		{
+			String associateBookAndAuthor = bookService.associateBookAndAuthor(bookId, authorId);
+			logger.info("Book and author have been associated : {} "+associateBookAndAuthor);
+			return new ResponseEntity(associateBookAndAuthor,HttpStatus.OK);
+			
+			
+		} 
+		catch (Exception e)
+		{
+			logger.error("Error in associateBookAndAuthor : {} "+e.getStackTrace());
+			return new ResponseEntity(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		
+		
+		
 	}
+	
 	@GetMapping("/getBooksByAuthor/{authorId}") // Corrected path variable syntax
     public List<Book> getBooksByAuthor(@PathVariable("authorId") Integer authorId) { // Use @PathVariable to access the path variable
         List<Book> books = bookService.findBooksByAuthor(authorId);

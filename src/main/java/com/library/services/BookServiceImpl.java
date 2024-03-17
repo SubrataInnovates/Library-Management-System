@@ -36,18 +36,27 @@ public class BookServiceImpl implements BookService
 	}
 
 	@Override
-	public String associateBookAndAuthor(Integer bookId, Integer authorId)
+	public String associateBookAndAuthor(Integer bookId, Integer authorId) throws Exception 
 	{
-		Book book = bookRepository.findById(authorId).get();
-		Author author = authorRepository.findById(authorId).get();
-		
-		book.setAuthor(author);
-		author.setNoOfBooks(author.getNoOfBooks()+1);
-		
-		bookRepository.save(book);
-		authorRepository.save(author);
-		
-		return "Book and Author have been associated";
+	    Optional<Book> bookOptional = bookRepository.findById(bookId);
+	    if (bookOptional.isEmpty()) {
+	        throw new Exception("Invalid book id !! try another one !!");
+	    }
+	    Book book = bookOptional.get();
+
+	    Optional<Author> authorOptional = authorRepository.findById(authorId);
+	    if (authorOptional.isEmpty()) {
+	        throw new Exception("Invalid author id !! try another one !!"); 
+	    }
+	    Author author = authorOptional.get();
+
+	    book.setAuthor(author);
+	    author.setNoOfBooks(author.getNoOfBooks() + 1);
+
+	    bookRepository.save(book);
+	    authorRepository.save(author);
+
+	    return "Book and Author have been associated";
 	}
 
 	@Override
